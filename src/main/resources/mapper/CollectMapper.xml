@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper.xml  需要引入的约定 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanma.collect.mapper.CollectMapper">
+
+    <!--查询所有 字段-->
+    <sql id="queryList">
+        collect_id,merchant_id,user_id,collect_create_time,collect_update_time,collect_yn
+    </sql>
+    <!--新增字段-->
+    <sql id="saveData">
+        merchant_id,user_id,collect_create_time,collect_update_time,collect_yn
+    </sql>
+
+
+    <select id="">
+
+    </select>
+</mapper>

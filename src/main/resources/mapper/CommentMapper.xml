@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper.xml  需要引入的约定 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanma.comment.mapper.CommentMapper">
+
+    <!--查询所有字段-->
+    <sql id="queryList">
+        comment_id,user_id,merchant_id,user_phone,comment_create_time,comment_discuss,comment_update_time,comment_yn
+    </sql>
+
+    <!--新增字段-->
+    <sql id="saveData">
+        user_id,merchant_id,user_phone,comment_create_time,comment_discuss,comment_update_time,comment_yn
+    </sql>
+
+
+    <select id="">
+
+    </select>
+</mapper>

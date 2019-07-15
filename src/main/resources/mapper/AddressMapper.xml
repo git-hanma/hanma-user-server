@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper.xml  需要引入的约定 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanma.address.mapper.AddressMapper">
+    <!--查询所有字段-->
+    <sql id="queryList">
+        address_id,user_id,address_phone,address_name,address_province,address_city,address_county,address_shipping,address_create_time,address_update_time,address_yn
+    </sql>
+    <!--新增字段-->
+    <sql id="saveData">
+        user_id,address_phone,address_name,address_province,address_city,address_county,address_shipping,address_create_time,address_update_time,address_yn
+    </sql>
+    <select id="queryUserIdAddress" resultType="address">
+          SELECT <include refid="queryList"/> from user_address
+          where user_id = #{userId} and address_id = #{addressId}
+    </select>
+</mapper>

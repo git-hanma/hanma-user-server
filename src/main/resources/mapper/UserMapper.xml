@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper.xml  需要引入的约定 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanma.user.mapper.UserMapper">
+
+    <!--查询所有字段-->
+    <sql id="queryList">
+        user_id,merchant_id,user_phone,user_pass,user_name,user_img,user_sex,user_create_time,user_update_time,user_yn
+    </sql>
+    <!--新增字段-->
+    <sql id="saveData">
+        merchant_id,user_phone,user_pass,user_name,user_user_img,user_sex,user_create_time,user_update_time,user_yn
+    </sql>
+    <!--根据用户ID查询-->
+    <select id="getUserId" resultType="user" parameterType="Long">
+        select <include refid="queryList"/> from t_user
+        where user_id = #{userId}
+    </select>
+    <!--根据ID修改密码-->
+    <update id="updateUserPass">
+        update t_user
+        SET
+          user_pass = #{userPass}
+        where
+          user_id = #{userPass}
+    </update>
+
+</mapper>
