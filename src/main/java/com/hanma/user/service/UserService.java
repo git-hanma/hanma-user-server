@@ -12,6 +12,8 @@ public interface UserService {
     User getUserId(Long userId);
 
     //根据ID修改密码接口
-    ResultMsg updateUserPass(Long userId, String userPass);
+    ResultMsg updateUser(User user);
 
+    //查询所有订单接口
+    DataGrid queryUserList();
 }

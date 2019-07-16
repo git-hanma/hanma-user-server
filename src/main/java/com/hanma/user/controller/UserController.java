@@ -29,6 +29,8 @@ public class UserController {
     private UserService userService;
 
 
+
+
     /**
      * 根据用户ID查询接口
      * @param userId
@@ -42,14 +44,15 @@ public class UserController {
     }
 
     /**
-     * 根据ID修改密码接口
+     * 根据ID修改接口
+     * @param user
      * @return
      */
-    @PostMapping("/updateUserPass")
+    @PostMapping("/updateUser")
     @ResponseBody
-    @ApiOperation(value = "根据ID修改密码接口")
-    public ResultMsg updateUserPass(Long userId,String userPass){
-        return userService.updateUserPass(userId,userPass);
+    @ApiOperation(value = "根据ID修改接口")
+    public ResultMsg updateUser(User user){
+        return userService.updateUser(user);
     }
 
 }

@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by zhaoyumeng on 2019/7/15.
  */
@@ -33,17 +36,16 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 根据ID修改密码
-     * @param userId
-     * @param userPass
+     * 根据ID修改
+     * @param user
      * @return
      */
     @Override
-    public ResultMsg updateUserPass(Long userId, String userPass) {
+    public ResultMsg updateUser(User user) {
         ResultMsg  resultMsg = new ResultMsg();
-
+        user.setUserUpdateTime(new Date());
         try {
-            userMapper.updateUserPass(userId,userPass);
+            userMapper.updateUser(user);
             resultMsg.setMsg("修改成功");
             resultMsg.setCode(200);
         }catch (Exception e){
@@ -54,6 +56,19 @@ public class UserServiceImpl implements UserService {
         return resultMsg;
     }
 
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Override
+    public DataGrid queryUserList() {
+        DataGrid db = new DataGrid();
+
+        List<User> userList = userMapper.queryUserList();
+        db.setRows(userList);
+        return db;
+    }
 
 
 }

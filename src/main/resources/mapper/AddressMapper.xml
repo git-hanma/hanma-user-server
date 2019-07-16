@@ -12,7 +12,10 @@
         user_id,address_phone,address_name,address_province,address_city,address_county,address_shipping,address_create_time,address_update_time,address_yn
     </sql>
     <select id="queryUserIdAddress" resultType="address">
-          SELECT <include refid="queryList"/> from user_address
-          where user_id = #{userId} and address_id = #{addressId}
+        select a.* from
+        user_address a
+        left JOIN
+        t_user u on
+        u.user_id = a.user_id
     </select>
 </mapper>

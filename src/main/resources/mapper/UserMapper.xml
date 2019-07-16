@@ -17,13 +17,31 @@
         select <include refid="queryList"/> from t_user
         where user_id = #{userId}
     </select>
-    <!--根据ID修改密码-->
-    <update id="updateUserPass">
+    <!--根据ID修改-->
+    <update id="updateUser">
         update t_user
-        SET
-          user_pass = #{userPass}
+        <set>
+            <if test="userPass!=null and userPass!=''">
+                user_pass = #{userPass},
+            </if>
+            <if test="userName!=null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userSex !=null">
+                user_sex = #{userSex},
+            </if>
+            <if test="userImg != null and userImg != ''">
+                user_img = #{userImg},
+            </if>
+            user_update_time = #{userUpdateTime}
+        </set>
         where
-          user_id = #{userPass}
+          user_id = #{userId}
     </update>
+    <!--查询所有用户-->
+    <select id="queryUserList" resultType="user">
+        select <include refid="queryList"/> from t_user
+
+    </select>
 
 </mapper>
