@@ -4,6 +4,7 @@ import com.hanma.address.domain.Address;
 import com.hanma.address.mapper.AddressMapper;
 import com.hanma.address.service.AddressService;
 import com.hanma.commons.DataGrid;
+import com.hanma.commons.ResultMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +37,27 @@ public class AddressServiceImpl implements AddressService{
         List<Address> addressList = addressMapper.queryUserIdAddress(userId,addressId);
         db.setRows(addressList);
         return db;
+    }
+
+    /**
+     * 新增地址
+     * @param address
+     * @return
+     */
+    @Override
+    public ResultMsg saveAddress(Address address) {
+        ResultMsg rs = new ResultMsg();
+
+        try{
+            addressMapper.saveAddress(address);
+            rs.setMsg("新增成功");
+            rs.setCode(200);
+        }catch (Exception e){
+            System.out.println(e);
+            rs.setCode(500);
+            rs.setMsg("新增失败");
+            rs.setSuccessFalse();
+        }
+        return rs;
     }
 }

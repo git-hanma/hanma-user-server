@@ -11,6 +11,7 @@
     <sql id="saveData">
         user_id,address_phone,address_name,address_province,address_city,address_county,address_shipping,address_create_time,address_update_time,address_yn
     </sql>
+    <!--根据用户ID查询地址-->
     <select id="queryUserIdAddress" resultType="address">
         select a.* from
         user_address a
@@ -18,4 +19,19 @@
         t_user u on
         u.user_id = a.user_id
     </select>
+    <!--新增地址-->
+    <insert id="saveAddress" parameterType="address">
+        insert into user_address(<include refid="saveData"/>)
+        VALUES(
+          #{addressPhone},
+          #{addressName},
+          #{addressProvince},
+          #{addressCity},
+          #{addressCounty},
+          #{addressShipping},
+          #{addressCreateTime},
+          #{addressUpdateTime},
+          #{addressYn}
+        )
+    </insert>
 </mapper>

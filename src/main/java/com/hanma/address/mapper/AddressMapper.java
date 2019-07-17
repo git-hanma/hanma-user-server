@@ -15,7 +15,6 @@ public interface AddressMapper {
     //根据用户ID查询所有地址
     List<Address> queryUserIdAddress(@Param("userId") Long userId, @Param("addressId") Long addressId);
 
-
-
-
+    //新增地址
+    void saveAddress(Address address);
 }
