@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,16 +28,12 @@ public class AddressServiceImpl implements AddressService{
     /**
      * 根据用户ID查询所有地址
      * @param userId
-     * @param addressId
      * @return
      */
     @Override
-    public DataGrid queryUserIdAddress(Long userId, Long addressId) {
-        DataGrid db = new DataGrid();
-
-        List<Address> addressList = addressMapper.queryUserIdAddress(userId,addressId);
-        db.setRows(addressList);
-        return db;
+    public List<Address> queryUserIdAddress(Long userId) {
+        List<Address> addressList = addressMapper.queryUserIdAddress(userId);
+        return addressList;
     }
 
     /**
@@ -47,7 +44,8 @@ public class AddressServiceImpl implements AddressService{
     @Override
     public ResultMsg saveAddress(Address address) {
         ResultMsg rs = new ResultMsg();
-
+        address.setAddressCreateTime(new Date());
+        address.setAddressYn(1);
         try{
             addressMapper.saveAddress(address);
             rs.setMsg("新增成功");
@@ -59,5 +57,37 @@ public class AddressServiceImpl implements AddressService{
             rs.setSuccessFalse();
         }
         return rs;
+    }
+
+    /**
+     * 根据ID删除
+     * @param addressId
+     * @return
+     */
+    @Override
+    public ResultMsg delAddressId(Long addressId) {
+        ResultMsg rs = new ResultMsg();
+        Integer yn = 0;
+        try{
+            addressMapper.delAddressId(addressId,yn);
+            rs.setCode(200);
+            rs.setMsg("删除成功");
+        }catch (Exception e){
+            System.out.println(e);
+            rs.setCode(500);
+            rs.setMsg("删除失败");
+            rs.setSuccessFalse();
+        }
+        return rs;
+    }
+
+    /**
+     * 根据ID查询
+     * @param addressId
+     * @return
+     */
+    @Override
+    public Address getAddressId(Long addressId) {
+        return addressMapper.getAddressId(addressId);
     }
 }

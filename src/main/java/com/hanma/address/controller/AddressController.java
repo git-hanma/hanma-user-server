@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by zhaoyumeng on 2019/7/15.
  */
@@ -30,14 +32,13 @@ public class AddressController {
     /**
      * 根据用户ID查询所有地址
      * @param userId
-     * @param addressId
      * @return
      */
     @ApiOperation(value = "根据用户ID查询所有地址接口")
     @GetMapping("/queryUserIdAddress")
     @ResponseBody
-    public DataGrid queryUserIdAddress(Long userId,Long addressId){
-        return addressService.queryUserIdAddress(userId,addressId);
+    public List<Address> queryUserIdAddress(Long userId){
+        return addressService.queryUserIdAddress(userId);
     }
 
 
@@ -47,11 +48,34 @@ public class AddressController {
      * @return
      */
     @ApiOperation(value = "新增地址接口")
-    @PostMapping
+    @PostMapping("/saveAddress")
     @ResponseBody
     public ResultMsg saveAddress(@RequestBody Address address){
         return addressService.saveAddress(address);
     }
 
+    /**
+     * 根据ID删除
+     * @param addressId
+     * @return
+     */
+    @ApiOperation(value = "根据ID删除")
+    @PostMapping("/delAddressId")
+    @ResponseBody
+    public ResultMsg delAddressId(Long addressId){
+        return addressService.delAddressId(addressId);
+    }
+
+    /**
+     * 根据ID查询
+     * @param addressId
+     * @return
+     */
+    @ApiOperation(value = "根据ID查询")
+    @GetMapping("/getAddressId")
+    @ResponseBody
+    public Address getAddressId(Long addressId){
+        return addressService.getAddressId(addressId);
+    }
 
 }
