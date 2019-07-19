@@ -49,4 +49,29 @@
         from user_address
         where address_id = #{addressId}
     </select>
+    <!--修改地址-->
+    <update id="updateAddress" parameterType="address">
+        update user_address
+        <set>
+            <if test="addressPhone!=null and addressPhone !=''">
+                address_phone = #{addressPhone},
+            </if>
+            <if test="addressName!=null and addressName!=''">
+                address_name = #{addressName},
+            </if>
+            <if test="addressProvince!=null and addressProvince!=''">
+                address_province = #{addressProvince},
+            </if>
+            <if test="addressCity!=null and addressCity!=''">
+                address_city = #{addressCity},
+            </if>
+            <if test="addressCounty!=null and addressCounty!=''">
+                address_county = #{addressCounty},
+            </if>
+            <if test="addressShipping != null and addressShipping != ''">
+                address_shipping = #{addressShipping},
+            </if>
+        </set>
+        where  address_id = #{addressId}
+    </update>
 </mapper>

@@ -20,4 +20,7 @@ public interface AddressService {
 
     //根据ID查询
     Address getAddressId(Long addressId);
+
+    //修改地址
+    ResultMsg updateAddress(Address address);
 }

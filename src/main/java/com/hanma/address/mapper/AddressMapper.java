@@ -20,9 +20,11 @@ public interface AddressMapper {
     void saveAddress(Address address);
 
     //根据ID删除
-    void delAddressId(@RequestParam("addressId") Long addressId,@RequestParam("addressYn") Integer yn);
+    void delAddressId(@Param("addressId") Long addressId,@Param("addressYn") Integer yn);
 
     //根据ID查询
     Address getAddressId(Long addressId);
 
+    //修改地址
+    void updateAddress(Address address);
 }

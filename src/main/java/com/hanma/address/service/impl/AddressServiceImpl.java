@@ -90,4 +90,26 @@ public class AddressServiceImpl implements AddressService{
     public Address getAddressId(Long addressId) {
         return addressMapper.getAddressId(addressId);
     }
+
+    /**
+     * 修改地址
+     * @param address
+     * @return
+     */
+    @Override
+    public ResultMsg updateAddress(Address address) {
+        ResultMsg rs = new ResultMsg();
+        address.setAddressUpdateTime(new Date());
+        try{
+            addressMapper.updateAddress(address);
+            rs.setMsg("修改成功");
+            rs.setCode(200);
+        }catch (Exception e){
+            System.out.println(e);
+            rs.setMsg("修改失败");
+            rs.setCode(500);
+            rs.setSuccessFalse();
+        }
+        return rs;
+    }
 }

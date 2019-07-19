@@ -59,7 +59,7 @@ public class AddressController {
      * @param addressId
      * @return
      */
-    @ApiOperation(value = "根据ID删除")
+    @ApiOperation(value = "根据ID删除接口")
     @PostMapping("/delAddressId")
     @ResponseBody
     public ResultMsg delAddressId(Long addressId){
@@ -71,11 +71,23 @@ public class AddressController {
      * @param addressId
      * @return
      */
-    @ApiOperation(value = "根据ID查询")
+    @ApiOperation(value = "根据ID查询接口")
     @GetMapping("/getAddressId")
     @ResponseBody
     public Address getAddressId(Long addressId){
         return addressService.getAddressId(addressId);
     }
 
+
+    /**
+     * 修改地址
+     * @param address
+     * @return
+     */
+    @ApiOperation(value = "修改地址接口")
+    @PostMapping("/updateAddress")
+    @ResponseBody
+    public ResultMsg updateAddress(@RequestBody Address address){
+        return addressService.updateAddress(address);
+    }
 }
