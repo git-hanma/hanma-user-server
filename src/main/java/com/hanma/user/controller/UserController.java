@@ -56,4 +56,16 @@ public class UserController {
         return userService.updateUser(user);
     }
 
+    /**
+     * 根据用户ID查询商家ID是否存在
+     * @param userId
+     * @return
+     */
+    @GetMapping("/getUserIdMerchantId")
+    @ApiOperation(value = "根据用户ID查询商家ID是否存在接口")
+    @ResponseBody
+    public Long getUserIdMerchantId(Long userId){
+        return userService.getUserIdMerchantId(userId);
+    }
+
 }

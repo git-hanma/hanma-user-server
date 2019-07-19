@@ -70,5 +70,15 @@ public class UserServiceImpl implements UserService {
         return db;
     }
 
+    /**
+     * 根据用户ID查询商家ID是否存在
+     * @param userId
+     * @return
+     */
+    @Override
+    public Long getUserIdMerchantId(Long userId) {
+        return userMapper.getUserIdMerchantId(userId);
+    }
+
 
 }

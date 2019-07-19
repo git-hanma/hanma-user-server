@@ -41,7 +41,11 @@
     <!--查询所有用户-->
     <select id="queryUserList" resultType="user">
         select <include refid="queryList"/> from t_user
-
+    </select>
+    <!--根据用户ID查询商家ID是否存在-->
+    <select id="getUserIdMerchantId" resultType="Long" parameterType="Long">
+        select merchant_id from t_user
+        where user_id = #{userId}
     </select>
 
 </mapper>

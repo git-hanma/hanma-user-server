@@ -19,4 +19,7 @@ public interface UserMapper {
 
     //查询所有用户
     List<User> queryUserList();
+
+    //根据用户ID查询商家ID是否存在
+    Long getUserIdMerchantId(Long userId);
 }

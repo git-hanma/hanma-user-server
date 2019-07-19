@@ -16,4 +16,7 @@ public interface UserService {
 
     //查询所有订单接口
     DataGrid queryUserList();
+
+    //根据用户ID查询商家ID是否存在
+    Long getUserIdMerchantId(Long userId);
 }
