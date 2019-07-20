@@ -30,6 +30,6 @@
     <!--根据商家ID查询评论-->
     <select id="queryMerchantIdComment" resultType="comment" parameterType="long">
         select <include refid="queryList"/>  from t_comment
-        where comment_yn = 1
+        where merchant_id = #{merchantId} and  comment_yn = 1
     </select>
 </mapper>
