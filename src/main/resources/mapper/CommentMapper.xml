@@ -14,8 +14,22 @@
         user_id,merchant_id,user_phone,comment_create_time,comment_discuss,comment_update_time,comment_yn
     </sql>
 
-
-    <select id="">
-
+    <!--新增评论-->
+    <insert id="saveComment" parameterType="comment">
+        insert into t_comment(<include refid="saveData"/>)
+        VALUES (
+          #{userId},
+          #{merchantId},
+          #{userPhone},
+          #{commentCreateTime},
+          #{commentDiscuss},
+          #{commentUpdateTime},
+          #{commentYn}
+        )
+    </insert>
+    <!--根据商家ID查询评论-->
+    <select id="queryMerchantIdComment" resultType="comment" parameterType="long">
+        select <include refid="queryList"/>  from t_comment
+        where comment_yn = 1
     </select>
 </mapper>

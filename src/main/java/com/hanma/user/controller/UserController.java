@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/user")
-@Api(description = "用户相关接口接口")
+@Api(description = "用户接口")
 public class UserController {
 
     /**

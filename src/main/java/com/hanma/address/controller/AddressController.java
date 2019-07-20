@@ -4,6 +4,7 @@ import com.hanma.address.domain.Address;
 import com.hanma.address.service.AddressService;
 import com.hanma.commons.DataGrid;
 import com.hanma.commons.ResultMsg;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/address")
+@Api(description = "地址接口")
 public class AddressController {
 
     /**
