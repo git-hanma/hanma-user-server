@@ -13,8 +13,20 @@
         merchant_id,user_id,collect_create_time,collect_update_time,collect_yn
     </sql>
 
-
-    <select id="">
-
+    <!--根据用户ID查询收藏记录-->
+    <select id="queryUserIdCollect" resultType="collect" parameterType="Long">
+        select <include refid="queryList"/> from t_collect
+        where user_id = #{userId}
     </select>
+
+    <!--新增收藏-->
+    <insert id="saveCollect" parameterType="collect">
+        insert into t_collect(<include refid="saveData"/>)
+        VALUES(
+          #{merchantId},
+          #{userId},
+          #{collectCreateTime},
+          #{collectYn}
+        )
+    </insert>
 </mapper>
