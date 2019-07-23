@@ -4,6 +4,9 @@ import com.hanma.commons.DataGrid;
 import com.hanma.commons.ResultMsg;
 import com.hanma.user.domain.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by zhaoyumeng on 2019/7/15.
  */
@@ -19,4 +22,7 @@ public interface UserService {
 
     //根据用户ID查询商家ID是否存在
     Long getUserIdMerchantId(Long userId);
+
+    //登录
+    ResultMsg loginUser(User user,String code);
 }

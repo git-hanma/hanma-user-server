@@ -48,4 +48,10 @@
         where user_id = #{userId}
     </select>
 
+    <!--登录-->
+    <select id="loginUser" resultType="user" parameterType="user">
+        select <include refid="queryList"/> FROM t_user
+        where user_phone= #{userPhone}  and user_pass =  #{userPass}
+    </select>
+
 </mapper>

@@ -22,4 +22,7 @@ public interface UserMapper {
 
     //根据用户ID查询商家ID是否存在
     Long getUserIdMerchantId(Long userId);
+
+    //登录
+    User loginUser(User user);
 }
