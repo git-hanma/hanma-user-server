@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
  * Created by zhaoyumeng on 2019/7/15.
  */
 @Controller
-@RequestMapping("collect")
+@RequestMapping("/collect")
 @Api(description = "收藏接口")
 public class CollectController {
 
@@ -37,7 +39,7 @@ public class CollectController {
     @ApiOperation(value = "新增收藏接口")
     @PostMapping("/saveCollect")
     @ResponseBody
-    public ResultMsg saveCollect(Collect collect){
+    public ResultMsg saveCollect(@RequestBody Collect collect){
         return collectService.saveCollect(collect);
     }
 
@@ -52,6 +54,19 @@ public class CollectController {
     @ResponseBody
     public List<Collect> queryUserIdCollect(Long userId){
         return collectService.queryUserIdCollect(userId);
+    }
+
+
+    /**
+     * 根据收藏ID删除
+     * @param collectId
+     * @return
+     */
+    @PostMapping("/delCollectId")
+    @ResponseBody
+    @ApiOperation(value = "根据收藏ID删除")
+    public ResultMsg delCollectId(Long collectId){
+        return  collectService.delCollectId(collectId);
     }
 
 }

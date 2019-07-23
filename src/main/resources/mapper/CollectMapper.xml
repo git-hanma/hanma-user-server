@@ -4,19 +4,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanma.collect.mapper.CollectMapper">
 
+    <resultMap type="collect" id="collectTerraceMap">
+        <id property="collectId" column="collect_id"/>
+        <result property="merchantId" column="merchant_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="collectCreateTime" column="collect_create_time"/>
+        <result property="collectUpdateTime" column="collect_update_time"/>
+        <!-- association：配置的一对一属性 -->
+        <!-- property：名字
+             javaType：类型
+         -->
+
+        <association property="terrace" javaType="terrace">
+            <id property="merchantId" column="merchant_id"></id>
+            <result property="merchantName" column="merchant_name"/>
+        </association>
+    </resultMap>
+
+
     <!--查询所有 字段-->
     <sql id="queryList">
         collect_id,merchant_id,user_id,collect_create_time,collect_update_time,collect_yn
     </sql>
     <!--新增字段-->
     <sql id="saveData">
-        merchant_id,user_id,collect_create_time,collect_update_time,collect_yn
+        merchant_id,user_id,collect_create_time,collect_yn
     </sql>
 
     <!--根据用户ID查询收藏记录-->
-    <select id="queryUserIdCollect" resultType="collect" parameterType="Long">
-        select <include refid="queryList"/> from t_collect
-        where user_id = #{userId}
+    <select id="queryUserIdCollect" resultMap="collectTerraceMap" >
+        select c.*,m.* from t_collect c
+        LEFT JOIN t_merchant m on c.merchant_id = m.merchant_id
+        where c.user_id = #{userId} and c.collect_yn = 1
     </select>
 
     <!--新增收藏-->
@@ -29,4 +48,11 @@
           #{collectYn}
         )
     </insert>
+
+    <!--根据ID删除-->
+    <update id="delCollectId">
+        update t_collect
+        SET  collect_yn = #{yn},collect_update_time = #{collectUpdateTime}
+        where collect_id = #{collectId}
+    </update>
 </mapper>

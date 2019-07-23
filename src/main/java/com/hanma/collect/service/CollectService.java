@@ -14,4 +14,7 @@ public interface CollectService {
 
     //根据用户ID查询收藏记录
     List<Collect> queryUserIdCollect(Long userId);
+
+    //根据收藏ID删除收藏
+    ResultMsg delCollectId(Long collectId);
 }

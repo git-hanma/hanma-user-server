@@ -15,18 +15,27 @@ public class Collect {
 
     //收藏主键
     private Long collectId;
+
     //商家主键
     private Long merchantId;
+
     //用户主键
     private Long userId;
+
     //新增时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date collectCreateTime;
+
     //修改时间
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date collectUpdateTime;
+
     //状态
     private Integer collectYn;
+
+    //商家 实体 用来前台展示信息
+    private Terrace terrace;
+
 }
