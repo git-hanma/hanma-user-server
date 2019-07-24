@@ -92,13 +92,13 @@ public class UserController {
      * 验证手机号是否存在
      * @param user
      * @return
-
+     */
     @GetMapping(value = "/checkPhone")
     @ApiOperation(value = "验证手机号 接口")
     @ResponseBody
     public ResultMsg  checkPhone(User user){
         return userService.checkPhone(user);
-    }*/
+    }
 
 
     /**
@@ -119,34 +119,34 @@ public class UserController {
      * @param request
      * @param cuPhone
      * @return
-
+     */
     @GetMapping("/sendPhoneCode")
     @ApiOperation(value = "发送手机验证码  接口")
     @ResponseBody
     public ResultMsg sendPhoneCode(HttpServletRequest request, String cuPhone){
         return  userService.sendPhoneCode(request,cuPhone);
-    }*/
+    }
 
 
     /**
      * 从缓存中取数据
      * @return
-
+    */
     @GetMapping("/gainRedisData")
     @ApiOperation(value = "从缓存中取数据")
     @ResponseBody
     public Object gainRedisData(){
         return userService.gainRedisData();
-    }*/
+    }
 
     /**
      * 从缓存中删除
-
+     */
     @GetMapping("/quitRedis")
     @ApiOperation(value = "从缓存中删除")
     @ResponseBody
     public void quitRedis(){
         userService.quitRedis();
-    }*/
+    }
 
 }

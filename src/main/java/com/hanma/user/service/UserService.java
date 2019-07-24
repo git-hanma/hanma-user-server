@@ -25,4 +25,16 @@ public interface UserService {
 
     //登录
     ResultMsg loginUser(User user,String code);
+
+    //从缓存中获取数据
+    Object gainRedisData();
+
+    //从缓存中删除
+    void quitRedis();
+
+    //发送手机验证码
+    ResultMsg sendPhoneCode(HttpServletRequest request, String cuPhone);
+
+    //验证手机号
+    ResultMsg checkPhone(User user);
 }

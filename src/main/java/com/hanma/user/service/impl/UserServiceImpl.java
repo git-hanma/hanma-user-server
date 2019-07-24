@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
         //讲加密完的密码 放到对象中取数据库查询
         user.setUserPass(md5);
         //生成key把key放到缓存里
-        String key = "user"+user.getUserPhone();
+        String key = "user";
         //根据手机号 和密码 进行数据库匹配  select * from t_customer where cu_phoone = and cu_pass =
         User dbUser = userMapper.loginUser(user);
 
@@ -155,5 +155,31 @@ public class UserServiceImpl implements UserService {
         return rs;
     }
 
+    /**
+     * 从缓存中获取
+     * @return
+     */
+    @Override
+    public Object gainRedisData() {
+        Object user = redisUtil.get("user");
+        return user;
+    }
 
+    /**
+     * 从缓存中删除
+     */
+    @Override
+    public void quitRedis() {
+        redisUtil.remove("user");
+    }
+
+    @Override
+    public ResultMsg sendPhoneCode(HttpServletRequest request, String cuPhone) {
+        return null;
+    }
+
+    @Override
+    public ResultMsg checkPhone(User user) {
+        return null;
+    }
 }
